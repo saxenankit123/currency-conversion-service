@@ -1,0 +1,11 @@
+FROM openjdk:8u151-jdk-alpine
+
+WORKDIR $(pwd)/currency-conversion-service
+
+WORKDIR $(pwd)/currency-conversion-service/target
+
+COPY *.jar /usr/data/currency-conversion-service-1.0.jar
+
+EXPOSE 8100
+
+CMD java /usr/data/currency-conversion-service-1.0.jar

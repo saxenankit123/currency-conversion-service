@@ -1,6 +1,6 @@
 package com.todo.currencyconversionservice;
 
-import java.lang.reflect.Array;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,13 +17,13 @@ public class CurrencyConverterController {
 	@GetMapping("/converter/from/{from}/to/{to}/value/{value}")
 	public CurrencyExchangeData convert(@PathVariable String from,@PathVariable String to,@PathVariable String value){
 		
-		//urrencyDataExchange.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
+		//currencyDataExchange.setPort(Integer.parseInt(environment.getProperty("CURRENCY_EXCHANGE_ENDPOINT")));
 		
 		Map<String,String> uriVariables = new HashMap<>();
 		uriVariables.put("from", from);
 		uriVariables.put("to", to);
 		ResponseEntity<CurrencyExchangeData> respEntity = new RestTemplate().
-			getForEntity("http://localhost:8000/exchange/from/{from}/to/{to}",
+			getForEntity("http://currency-exchange-service:8001/exchange/from/{from}/to/{to}",
 					CurrencyExchangeData.class,uriVariables);
 		CurrencyExchangeData data = respEntity.getBody();
 		CurrencyExchangeData resp = new CurrencyExchangeData(data.getId(), from, to, data.getConversionRate(), Double.parseDouble(value)*data.getConversionRate()  );
