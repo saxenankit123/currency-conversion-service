@@ -17,16 +17,4 @@ services:
       restart_policy:
         condition: on-failure
 
-  currency-exchange-service:
-    
-    image: saxenankit/currency-exchange-service-image:1.0
-    ports:
-      - "8001:8001"
-    deploy:
-      replicas: 3
-      update_config:
-        parallelism: 2
-        delay: 10s
-      restart_policy:
-        condition: on-failure
-      endpoint_mode: vip
+ 
