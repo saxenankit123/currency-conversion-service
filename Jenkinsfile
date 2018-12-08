@@ -6,9 +6,9 @@ pipeline{
         stage('Build'){
 
             steps{
-                bat 'mvn clean package'
+                sh 'mvn clean package'
 
-                bat 'docker build -f Dockerfile-currencyconversion -t saxenankit/currency-conversion-service-image: .'
+                sh 'docker build -f Dockerfile-currencyconversion -t saxenankit/currency-conversion-service-image: .'
 
 
             }
@@ -17,7 +17,7 @@ pipeline{
         stage('Create docker image'){
 
             steps{
-                bat 'docker build -f Dockerfile-currencyconversion -t saxenankit/currency-conversion-service-image:${env.BUILD_ID} .'
+                sh 'docker build -f Dockerfile-currencyconversion -t saxenankit/currency-conversion-service-image:${env.BUILD_ID} .'
             }
 
         }
@@ -25,7 +25,7 @@ pipeline{
         stage('Push image to registry'){
 
             steps{
-                bat 'docker push saxenankit/currency-conversion-service-image:${env.BUILD_ID} '
+                sh 'docker push saxenankit/currency-conversion-service-image:${env.BUILD_ID} '
             }
 
         }
