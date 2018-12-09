@@ -22,7 +22,7 @@ pipeline{
         stage('Push image to registry'){
 
             steps{
-       
+                sh 'docker login --username=saxenankit --password=Hello@123'
                 sh 'docker push saxenankit/currency-conversion-service-image:latest '
             }
 
