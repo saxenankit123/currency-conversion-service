@@ -7,6 +7,7 @@ public class CurrencyExchangeData {
 	
 
 	private Long id;
+	private String IpAddress;
 	
 	private int port;
 	public int getPort() {
@@ -61,6 +62,12 @@ public class CurrencyExchangeData {
 	}
 	public void setConvertedValue(double convertedValue) {
 		this.convertedValue = convertedValue;
+	}
+	public String getIpAddress() {
+		return IpAddress;
+	}
+	public void setIpAddress(String ipAddress) {
+		IpAddress = ipAddress;
 	}
 	
 	

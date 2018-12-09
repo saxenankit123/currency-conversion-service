@@ -29,7 +29,7 @@ public class CurrencyConverterController {
 		CurrencyExchangeData resp = new CurrencyExchangeData(data.getId(), from, to, data.getConversionRate(), Double.parseDouble(value)*data.getConversionRate()  );
 		
 		resp.setPort(data.getPort());
-		
+		resp.setIpAddress(data.getIpAddress());
 		return  resp;
 	}
 }
